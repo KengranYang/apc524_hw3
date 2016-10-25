@@ -3,6 +3,7 @@
 import functions as F
 import numpy as N
 import unittest
+import pdb
 
 class TestFunctions(unittest.TestCase):
     def testApproxJacobian1(self):
@@ -33,6 +34,3 @@ class TestFunctions(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-
-
