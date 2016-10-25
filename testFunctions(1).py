@@ -3,7 +3,6 @@
 import functions as F
 import numpy as N
 import unittest
-import pdb
 
 class TestFunctions(unittest.TestCase):
     def testApproxJacobian1(self):
@@ -22,7 +21,9 @@ class TestFunctions(unittest.TestCase):
             return A * x
         x0 = N.matrix("5; 6")
         dx = 1.e-6
+        # import pdb; pdb.set_trace()
         Df_x = F.ApproximateJacobian(f, x0, dx)
+
         self.assertEqual(Df_x.shape, (2,2))
         N.testing.assert_array_almost_equal(Df_x, A)
 
