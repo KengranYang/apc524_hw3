@@ -33,5 +33,23 @@ class TestFunctions(unittest.TestCase):
         for x in N.linspace(-2,2,11):
             self.assertEqual(p(x), x**2 + 2*x + 3)
 
+    def testLinear1D(self):
+        x0 = 21.0
+        dx = 1.e-3
+        p = F.FuncLinear1D([10, 2])
+        AnalJ = p.Df(x0)
+        ApproxJ = F.ApproximateJacobian(p,x0,dx)
+        self.assertAlmostEqual(AnalJ, ApproxJ)
+
+    def testLinearND(self):
+        #the dimension of the linear system depends on the inputs
+        A = N.matrix("1. 2. 3.; 3. 4. 3.; 1 1 1")
+        x0 = N.matrix("5; 6 ; 7")
+        dx = 1.e-3
+        p = F.FuncLinearND(A)
+        AnalJ = p.Df(x0)
+        ApproxJ = F.ApproximateJacobian(p,x0,dx)
+        N.testing.assert_array_almost_equal(AnalJ, ApproxJ)
+
 if __name__ == '__main__':
     unittest.main()
