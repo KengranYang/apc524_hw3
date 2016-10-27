@@ -40,7 +40,7 @@ class Polynomial(object):
         return self.f(x)
 
 class FuncLinear1D(object):
-    """Callable polynomial object.
+    """Callable 1D polynomial object.
 
     Example usage: to construct the polynomial p(x) = 2x + 3,
     and evaluate p(5):
@@ -57,6 +57,8 @@ class FuncLinear1D(object):
         return self._coeffs[1]
 
 class FuncLinearND(object):
+    """Callable nD linear system: f(x) = A*x, where
+        A is a n*n matrix and x is a n*1 vector."""
     def __init__(self, coeffs):
         self._A = coeffs
 
@@ -68,3 +70,25 @@ class FuncLinearND(object):
 
     def Df(self,x):
         return self._A
+
+class FuncNonLinear3D():
+    """non-linear system: [x*y*z, y^2, x + z]"""
+    def f(self, x):
+        fx = N.matrix(N.zeros((3,1)))
+        fx[0] = x[0]*x[1]*x[2]
+        fx[1] = x[1]**2
+        fx[2] = x[0] + x[2]
+        return fx
+
+    def Df(self,x):
+        fx = N.matrix(N.zeros((3,3)))
+        fx[0,0] = x[1]*x[2]
+        fx[0,1] = x[0]*x[2]
+        fx[0,2] = x[0]*x[1]
+        fx[1,1] = 2* x[1]
+        fx[2,0] = 1
+        fx[2,2] = 1
+        return fx
+
+    def __call__(self, x):
+        return self.f(x)

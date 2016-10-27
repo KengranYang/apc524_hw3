@@ -12,7 +12,8 @@ class Newton(object):
         tol:     tolerance for iteration (iterate until |f(x)| < tol)
         maxiter: maximum number of iterations to perform
         dx:      step size for computing approximate Jacobian
-        Df:      analytical Jacobian input by user"""
+        Df:      analytical Jacobian input by user
+        r:       radius that the approximated root must lie within"""
         self._f = f
         self._tol = tol
         self._maxiter = maxiter
@@ -31,7 +32,6 @@ class Newton(object):
                 return x
             x = self.step(x, fx)
             if self._r != None and N.linalg.norm(x - x0)> self._r:
-                # print '%s\n'%(x)
                 raise Exception('the approximated root lies outside a radius r of the initial guess x0\n')
 
         fx = self._f(x)
