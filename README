@@ -1,0 +1,38 @@
+# apc524_hw3
+
+****************************
+Kengran Yang
+Civil and Environmental Engineering
+Princeton University
+***************************
+
+This readme file contains detailed explanation of each file in the hw3.bundle.
+
+The bundle contains the following files:
+
+1. README
+
+2. functions.py
+  This is the corrected functions.py file. In the original file, there is a bug in the calculation of the partial
+  derivatives of the function in the Jacobian matrix, where the denominator of the explicit Euler method is missing.
+  The bug has been fixed.
+
+  Some other functions are also added as classes in the file to test the accuracy of their analytical
+  Jacobians.
+
+3. testFunctions.py
+  It contains tests for the routines in functions.py. The detail of each test items are introduced
+  in the actual file.
+
+4. newton.py
+  This is the corrected newton.py file. There is a bug in the function "step" of the original file where the
+  return value should be "x-h" instead of "x+h". The bug has been fixed.
+
+  Some exceptions are added in the code:
+  a. check if the approximated root lies outside a radius r of the initial guess x0.
+  b. check if the Newton method fails to converge after the maximum number of iterations.
+  c. a flag will raise if the approximated Jacobian is used.
+
+5. testNewton.py
+  It contains tests for the routines in newton.py. The detail of each test items are introduced
+  in the actual file.
