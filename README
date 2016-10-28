@@ -6,6 +6,7 @@ Civil and Environmental Engineering
 Princeton University
 ***************************
 
+<<<<<<< HEAD
 This readme file contains detailed explanation of each file in the hw3.bundle.
 
 The bundle contains the following files:
@@ -36,3 +37,5 @@ The bundle contains the following files:
 5. testNewton.py
   It contains tests for the routines in newton.py. The detail of each test items are introduced
   in the actual file.
+=======
+>>>>>>> 4a7f505ec3a3fc451ff6eb1954f194b1a3db77d8
